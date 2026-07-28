@@ -121,13 +121,11 @@
       <form onsubmit="handleFormSubmit(event)">
         <div class="field">
           <label for="userName">Full Name</label>
-          <!-- Show Shadman only as example placeholder -->
-          <input type="text" id="userName" required placeholder="e.g. Shadman">
+          <input type="text" id="userName" name="name" required placeholder="e.g. Shadman">
         </div>
         <div class="field">
           <label for="userEmail">Email Address</label>
-          <!-- Show email only as example placeholder -->
-          <input type="email" id="userEmail" required placeholder="e.g. shadman@gmail.com">
+          <input type="email" id="userEmail" name="email" required placeholder="e.g. shadman@gmail.com">
         </div>
         <button type="submit" class="open-btn" style="margin-top: 0.5rem;" id="submitBtn">Unlock & Open File</button>
       </form>
@@ -139,8 +137,10 @@
   </footer>
 
   <script>
-    // External Data Receiver Endpoint / Webhook
-    const EXTERNAL_SITE_ENDPOINT = 'https://your-external-endpoint.com/api/leads';
+    // -------------------------------------------------------------
+    // REPLACE THIS URL WITH YOUR ACTUAL FORMSPREE ENDPOINT
+    // -------------------------------------------------------------
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mnjewgop';
 
     const notes = [
       { id: 1, title: "Classical Mechanics & Dynamics", subject: "physics", fileUrl: "notes/physics_mechanics.pdf", fileSize: "1.2 MB", views: 142 },
@@ -241,25 +241,28 @@
       const email = document.getElementById('userEmail').value;
       const submitBtn = document.getElementById('submitBtn');
 
-      submitBtn.textContent = 'Opening...';
+      submitBtn.textContent = 'Sending...';
       localStorage.setItem('user_name', name);
       localStorage.setItem('user_email', email);
 
-      const leadPayload = {
+      const payload = {
         name: name,
         email: email,
-        noteRequested: selectedNote.title,
-        timestamp: new Date().toISOString()
+        note_requested: selectedNote.title,
+        timestamp: new Date().toLocaleString()
       };
 
       try {
-        await fetch(EXTERNAL_SITE_ENDPOINT, {
+        await fetch(FORMSPREE_ENDPOINT, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(leadPayload)
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
         });
       } catch (error) {
-        console.log('User session saved locally.');
+        console.log('Saved locally.');
       }
 
       selectedNote.views++;
