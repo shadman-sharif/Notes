@@ -44,7 +44,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
     body { background-color: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; padding: 0 1rem 1rem 1rem; max-width: 1100px; margin: 0 auto; }
     
-    /* Sticky Header Styling */
+  
     header { 
       position: sticky; 
       top: 0; 
@@ -138,7 +138,7 @@
 
   <div class="grid" id="grid"></div>
 
- 
+  
   <div class="modal-bg" id="leadModal">
     <div class="modal">
       <button class="close-btn" onclick="closeModal()">✕</button>
@@ -151,7 +151,14 @@
         </div>
         <div class="field">
           <label for="userEmail">Email Address</label>
-          <input type="email" id="userEmail" name="email" required placeholder="e.g. shadman@gmail.com">
+          <input 
+            type="email" 
+            id="userEmail" 
+            name="email" 
+            required 
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+            placeholder="e.g. shadman@gmail.com"
+          >
         </div>
         <button type="submit" class="open-btn" style="margin-top: 0.4rem;" id="submitBtn">Unlock & Open File</button>
       </form>
@@ -163,15 +170,17 @@
   </footer>
 
   <script>
-    
+
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
 
     const notes = [
-      { id: 1, title: "Classical Mechanics & Dynamics", subject: "physics", fileUrl: "notes/physics_mechanics.pdf", fileSize: "1.2 MB" },
-      { id: 2, title: "Cellular Biology & Genetics", subject: "biology", fileUrl: "notes/biology_genetics.pdf", fileSize: "2.4 MB" },
-      { id: 3, title: "Organic Chemistry Reactions", subject: "chemistry", fileUrl: "notes/chemistry_organic.pdf", fileSize: "850 KB" },
-      { id: 4, title: "Algebra & Polynomial Functions", subject: "general-math", fileUrl: "notes/general_math.pdf", fileSize: "1.1 MB" },
-      { id: 5, title: "Differential Calculus", subject: "higher-math", fileUrl: "notes/calculus.pdf", fileSize: "3.0 MB" }
+      { 
+        id: 1, 
+        title: "অসীম গুণোত্তর ধারার অসীমতক সমষ্টি (অধ্যায়-৭)", 
+        subject: "general-math", 
+        fileUrl: "notes/general-math_cha7.pdf", 
+        fileSize: "153 KB" 
+      }
     ];
 
     let currentSubject = 'all';
