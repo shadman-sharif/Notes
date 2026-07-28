@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Study Notes Hub</title>
   <style>
-    /* CSS: Modern Dashboard Design */
     :root {
       --bg-color: #f8fafc;
       --card-bg: #ffffff;
@@ -14,7 +13,7 @@
       --primary: #3b82f6;
       --border: #e2e8f0;
       
-      /* Subject Colors */
+  
       --physics-color: #0284c7;
       --physics-bg: #e0f2fe;
       --biology-color: #16a34a;
@@ -52,7 +51,7 @@
       color: var(--text-muted);
     }
 
-    /* Controls Bar */
+   
     .controls {
       display: flex;
       flex-direction: column;
@@ -160,7 +159,7 @@
     .doc-icon {
       width: 24px;
       height: 24px;
-      fill: #2b579a; /* Word document blue */
+      fill: #2b579a; 
     }
 
     .note-title {
@@ -220,13 +219,11 @@
   </div>
 
   <div class="notes-grid" id="notesGrid">
-    <!-- Note cards injected via JS -->
+  
   </div>
 
   <script>
-    // JAVASCRIPT: Data & Filtering Logic
-
-    // 1. Add your Word files (.docx or .doc) here
+   
     const notesData = [
       {
         id: 1,
@@ -265,7 +262,7 @@
     let currentSubject = 'all';
     let searchQuery = '';
 
-    // Render cards to screen
+   
     function renderNotes() {
       const grid = document.getElementById('notesGrid');
       grid.innerHTML = '';
@@ -285,7 +282,7 @@
         const card = document.createElement('div');
         card.className = 'note-card';
         
-        // Word Document SVG Icon
+        
         const wordIcon = `<svg class="doc-icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>`;
 
         card.innerHTML = `
@@ -305,11 +302,11 @@
       });
     }
 
-    // Filter handlers
+   
     function filterSubject(subject) {
       currentSubject = subject;
       
-      // Update UI buttons
+   
       document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
         if (btn.textContent.toLowerCase() === subject || (subject === 'all' && btn.textContent === 'All')) {
@@ -325,7 +322,7 @@
       renderNotes();
     }
 
-    // Initial render
+   
     renderNotes();
   </script>
 </body>
