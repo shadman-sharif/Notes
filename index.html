@@ -44,7 +44,6 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
     body { background-color: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; padding: 0 1rem 1rem 1rem; max-width: 1100px; margin: 0 auto; }
     
-  
     header { 
       position: sticky; 
       top: 0; 
@@ -138,7 +137,6 @@
 
   <div class="grid" id="grid"></div>
 
-  
   <div class="modal-bg" id="leadModal">
     <div class="modal">
       <button class="close-btn" onclick="closeModal()">✕</button>
@@ -176,10 +174,17 @@
     const notes = [
       { 
         id: 1, 
-        title: "অসীম গুণোত্তর ধারার অসীমতক সমষ্টি (অধ্যায়-৭)", 
+        title: "অসীম গুণোত্তর ধারার অসীমতক সমষ্টি (অধ্যায়-৭)", 
         subject: "general-math", 
         fileUrl: "notes/general-math_cha7.pdf", 
         fileSize: "153 KB" 
+      },
+      { 
+        id: 2, 
+        title: "গতির সূত্রসমূহ, নিউটনের গতিসূত্র ও মহাকর্ষ বল (physicsClues)", 
+        subject: "physics", 
+        fileUrl: "notes/physicsClues .pdf", 
+        fileSize: "10.3 MB" 
       }
     ];
 
